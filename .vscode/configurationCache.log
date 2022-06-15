@@ -1,0 +1,1 @@
+{"buildTargets":["-O","all","hadolint","https","install","lint","setup","test","wget"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

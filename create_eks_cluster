@@ -1,1 +1,1 @@
-eksctl cluster --config-file=cluster.yml
+eksctl create cluster --config-file=cluster.yml
