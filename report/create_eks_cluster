@@ -1,0 +1,32 @@
+➜  Udacity_Capstone git:(main) ✗ ./create_eks_cluster.sh
+2022-06-15 23:21:37 [!]  SSM is now enabled by default; `ssh.enableSSM` is deprecated and will be removed in a future release
+2022-06-15 23:21:38 [ℹ]  eksctl version 0.100.0
+2022-06-15 23:21:38 [ℹ]  using region us-west-1
+2022-06-15 23:21:39 [ℹ]  setting availability zones to [us-west-1b us-west-1c]
+2022-06-15 23:21:39 [ℹ]  subnets for us-west-1b - public:192.168.0.0/19 private:192.168.64.0/19
+2022-06-15 23:21:39 [ℹ]  subnets for us-west-1c - public:192.168.32.0/19 private:192.168.96.0/19
+2022-06-15 23:21:40 [ℹ]  nodegroup "udacity" will use "ami-0148942611f4454e2" [AmazonLinux2/1.22]
+2022-06-15 23:21:40 [ℹ]  using Kubernetes version 1.22
+2022-06-15 23:21:40 [ℹ]  creating EKS cluster "udacity" in "us-west-1" region with un-managed nodes
+2022-06-15 23:21:40 [ℹ]  1 nodegroup (udacity) was included (based on the include/exclude rules)
+2022-06-15 23:21:40 [ℹ]  will create a CloudFormation stack for cluster itself and 1 nodegroup stack(s)
+2022-06-15 23:21:40 [ℹ]  will create a CloudFormation stack for cluster itself and 0 managed nodegroup stack(s)
+2022-06-15 23:21:40 [ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=us-west-1 --cluster=udacity'
+2022-06-15 23:21:40 [ℹ]  Kubernetes API endpoint access will use default of {publicAccess=true, privateAccess=false} for cluster "udacity" in "us-west-1"
+2022-06-15 23:21:40 [ℹ]  CloudWatch logging will not be enabled for cluster "udacity" in "us-west-1"
+2022-06-15 23:21:40 [ℹ]  you can enable it with 'eksctl utils update-cluster-logging --enable-types={SPECIFY-YOUR-LOG-TYPES-HERE (e.g. all)} --region=us-west-1 --cluster=udacity'
+2022-06-15 23:21:40 [ℹ]  
+2 sequential tasks: { create cluster control plane "udacity", 
+    2 sequential sub-tasks: { 
+        wait for control plane to become ready,
+        create nodegroup "udacity",
+    } 
+}
+2022-06-15 23:21:40 [ℹ]  building cluster stack "eksctl-udacity-cluster"
+2022-06-15 23:21:42 [ℹ]  deploying stack "eksctl-udacity-cluster"
+2022-06-15 23:22:12 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-cluster"
+2022-06-15 23:22:43 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-cluster"
+2022-06-15 23:23:44 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-cluster"
+2022-06-15 23:24:45 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-cluster"
+2022-06-15 23:25:46 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-cluster"
+2022-06-15 23:26:47 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-cluster"

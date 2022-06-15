@@ -11,7 +11,7 @@ dockerpath=mryutran/udacity_capstone
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
 docker login -u mryutran
-docker tag udacity:latest $dockerpath
+docker tag udacity_capstone:latest $dockerpath
 # Step 3:
 # Push image to a docker repository
 docker push $dockerpath

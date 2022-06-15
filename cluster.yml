@@ -2,9 +2,12 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: udacity_capstone_cluster
+  name: udacity
   region: us-west-1
 
+iam: 
+  withOIDC: true
+  
 nodeGroups:
   - name: udacity
     instanceType: t2.small
@@ -13,6 +16,6 @@ nodeGroups:
     minSize: 2
     maxSize: 3
     volumeSize: 80
-    ssh:
-      allow: true
-      publicKeyName: udacity
+    ssh: # enable SSH using SSM
+      enableSsm: true
+      
