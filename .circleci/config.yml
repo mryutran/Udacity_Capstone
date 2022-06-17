@@ -170,7 +170,9 @@ jobs:
           - run:
               name: Wait for LoadBalancer to be ready
               command: |         
-                kubectl get service/udacity-capstone-service 
+                kubectl get service/udacity-capstone-service
+                kubectl get deployment
+                kubectl get pods  
 workflows:
   default:
     jobs:
@@ -193,8 +195,8 @@ workflows:
       #     version: "1.0"
       #     requires:
       #         - "create-eks-cluster"
-      - check-application:
-          cluster-name: udacity-capstone
+      # - check-application:
+      #     cluster-name: udacity-capstone
       #     requires:
       #         - "deploy-application"
       # - create-loadbalancer:
