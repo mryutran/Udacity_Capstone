@@ -65,6 +65,7 @@ workflows:
       # - run-lint:
       #     requires:
       #       - "shellcheck/check"
-      - build-docker-image:
+      - build-docker-image
+      # - build-docker-image:
           # requires:
           #   - "run-lint"
