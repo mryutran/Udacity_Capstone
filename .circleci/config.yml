@@ -133,6 +133,6 @@ workflows:
       #     cluster-name: udacity-capstone
       - deploy-application:
           cluster-name: udacity-capstone
-          version: 1.0
+          version: "1.0"
       #     requires:
       #         - "create-eks-cluster"
