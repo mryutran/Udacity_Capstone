@@ -54,3 +54,10 @@ jobs:
            command: |
             build_docker.sh
     
+workflows:
+  default:
+    jobs:
+      - build
+      - build-docker-image:
+          requires:
+            - "build"
