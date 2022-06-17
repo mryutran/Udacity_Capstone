@@ -196,41 +196,64 @@ jobs:
               name: Check on pod status
               command: |
                 kubectl get pods
+
+    delete-eks-cluster:
+      docker:
+      - image: 'cimg/python:3.10'
+      parameters:
+        cluster-name:
+          description: |
+            Name of the EKS cluster
+          type: string
+      steps:
+        - checkout
+        - aws-eks/install-aws-iam-authenticator:
+            release-tag: ''
+        - kubernetes/install:
+            kubectl-version: v1.22.0
+        - aws-eks/delete-cluster:
+            cluster-name: << parameters.cluster-name >>
+            aws-region: $AWS_DEFAULT_REGION   
+            wait: true    
 workflows:
   default:
     jobs:
-      # - shellcheck/check
-      # - run-lint:
-      #     requires:
-      #       - "shellcheck/check"
-      # - build-docker-image:
-          # requires:
-          #   - "run-lint"
+      - shellcheck/check
+      - run-lint:
+          requires:
+            - "shellcheck/check"
+      - build-docker-image:
+          requires:
+            - "run-lint"
       # - push-docker-image-to-docker-hub
-      # - push-docker-image-to-docker-hub:
-      #     requires:
-      #       - "build-docker-image"
+      - push-docker-image-to-docker-hub:
+          requires:
+            - "build-docker-image"
       # - aws-eks/create-cluster:
-      # - create-eks-cluster:
-      #     cluster-name: udacity-capstone
+      - create-eks-cluster:
+          cluster-name: udacity-capstone
+          requires:
+            - "push-docker-image-to-docker-hub"
       - deploy-application:
           cluster-name: udacity-capstone
           version: "1.0"
-      #     requires:
-      #         - "create-eks-cluster"
-      # - check-application:
-      #     cluster-name: udacity-capstone
-      #     requires:
-      #         - "deploy-application"
+          requires:
+              - "create-eks-cluster"
+      - check-application:
+          cluster-name: udacity-capstone
+          requires:
+              - "deploy-application"
       - create-loadbalancer:
           cluster-name: udacity-capstone
-      #     requires:
-      #         - "check-application"
+          requires:
+              - "check-application"
       - check-loadbalancer:
           cluster-name: udacity-capstone
-      #     requires:
-      #         - "create-loadbalancer"
-      # - delete-k8s:
-      #     cluster-name: udacity-capstone
-      #     requires:
-      #         - "create-loadbalancer"
+          requires:
+              - "create-loadbalancer"
+      - delete-k8s:
+          cluster-name: udacity-capstone
+          requires:
+              - "create-loadbalancer"
+      - delete-eks-cluster:
+          cluster-name: udacity-capstone
