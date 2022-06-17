@@ -1,5 +1,4 @@
-[![CircleCI](https://circleci.com/gh/mryutran/Udacity_Capstone/tree/main.svg?style=svg)](https://circleci.com/gh/mryutran/Udacity_Capstone/tree/main)
-
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/mryutran/Udacity_Capstone/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/mryutran/Udacity_Capstone/tree/main)
 # Udacity AWS Devops Engineer Capstone Project
 
 This project is a sample python Hello World application, using CircleCI + K8s and EKS.
