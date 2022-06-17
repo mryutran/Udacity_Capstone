@@ -75,25 +75,25 @@ jobs:
     create-eks-cluster:
       docker:
       - image: 'cimg/python:3.10'
-    parameters:
-      cluster-name:
-        description: |
-          Name of the EKS cluster
-        type: string
-    steps:
-      - checkout
-      - kubernetes/install:
-          kubectl-version: v1.22.0
-      - aws-eks/create-cluster:
-          cluster-name: << parameters.cluster-name >>
-          aws-region: $AWS_DEFAULT_REGION   
-          node-type: t2.micro
-          ssh-access: true
-          ssh-public-key: id_rsa.pub
-      - run:
-          command: |
-            kubectl get services
-          name: Test Cluster
+      parameters:
+        cluster-name:
+          description: |
+            Name of the EKS cluster
+          type: string
+      steps:
+        - checkout
+        - kubernetes/install:
+            kubectl-version: v1.22.0
+        - aws-eks/create-cluster:
+            cluster-name: << parameters.cluster-name >>
+            aws-region: $AWS_DEFAULT_REGION   
+            node-type: t2.micro
+            ssh-access: true
+            ssh-public-key: id_rsa.pub
+        - run:
+            command: |
+              kubectl get services
+            name: Test Cluster
       
 workflows:
   default:
