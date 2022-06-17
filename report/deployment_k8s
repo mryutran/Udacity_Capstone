@@ -1,0 +1,11 @@
+➜  Udacity_Capstone git:(main) ✗ ./deployment_k8s.sh
+deployment.apps/udacity-capstone created
+service/udacity-capstone exposed
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS               IMAGES                      SELECTOR
+udacity-capstone   0/2     2            0           3s    udacity-capstone-fcq24   mryutran/udacity_capstone   app=udacity-capstone
+NAME               TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE   SELECTOR
+kubernetes         ClusterIP      10.100.0.1      <none>        443/TCP        15m   <none>
+udacity-capstone   LoadBalancer   10.100.80.126   <pending>     80:31593/TCP   2s    app=udacity-capstone
+NAME                                READY   STATUS              RESTARTS   AGE   IP       NODE                             NOMINATED NODE   READINESS GATES
+udacity-capstone-56f7dd8c89-8hg78   0/1     ContainerCreating   0          5s    <none>   ip-192-168-55-167.ec2.internal   <none>           <none>
+udacity-capstone-56f7dd8c89-skx7v   0/1     ContainerCreating   0          5s    <none>   ip-192-168-6-48.ec2.internal     <none>           <none>

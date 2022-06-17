@@ -2,14 +2,14 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: udacity
-  region: us-west-1
+  name: udacity-capstone
+  region: us-east-1
 
 iam: 
   withOIDC: true
-  
+
 nodeGroups:
-  - name: udacity
+  - name: udacity-capstone
     instanceType: t2.small
     amiFamily: AmazonLinux2
     desiredCapacity: 2

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: udacity-capstone
+  labels:
+    app: udacity-capstone
+spec:
+  selector:
+    matchLabels:
+      app: udacity-capstone
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: udacity-capstone
+    spec:
+      containers:
+      - name: app
+        image: mryutran/udacity_capstone
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "0.2"
+        ports:
+        - containerPort: 8080

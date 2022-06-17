@@ -1,1 +1,0 @@
-kubectl rollout undo deployment udacity_capstone

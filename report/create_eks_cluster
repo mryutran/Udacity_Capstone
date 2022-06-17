@@ -1,32 +1,71 @@
-➜  Udacity_Capstone git:(main) ✗ ./create_eks_cluster.sh
-2022-06-15 23:21:37 [!]  SSM is now enabled by default; `ssh.enableSSM` is deprecated and will be removed in a future release
-2022-06-15 23:21:38 [ℹ]  eksctl version 0.100.0
-2022-06-15 23:21:38 [ℹ]  using region us-west-1
-2022-06-15 23:21:39 [ℹ]  setting availability zones to [us-west-1b us-west-1c]
-2022-06-15 23:21:39 [ℹ]  subnets for us-west-1b - public:192.168.0.0/19 private:192.168.64.0/19
-2022-06-15 23:21:39 [ℹ]  subnets for us-west-1c - public:192.168.32.0/19 private:192.168.96.0/19
-2022-06-15 23:21:40 [ℹ]  nodegroup "udacity" will use "ami-0148942611f4454e2" [AmazonLinux2/1.22]
-2022-06-15 23:21:40 [ℹ]  using Kubernetes version 1.22
-2022-06-15 23:21:40 [ℹ]  creating EKS cluster "udacity" in "us-west-1" region with un-managed nodes
-2022-06-15 23:21:40 [ℹ]  1 nodegroup (udacity) was included (based on the include/exclude rules)
-2022-06-15 23:21:40 [ℹ]  will create a CloudFormation stack for cluster itself and 1 nodegroup stack(s)
-2022-06-15 23:21:40 [ℹ]  will create a CloudFormation stack for cluster itself and 0 managed nodegroup stack(s)
-2022-06-15 23:21:40 [ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=us-west-1 --cluster=udacity'
-2022-06-15 23:21:40 [ℹ]  Kubernetes API endpoint access will use default of {publicAccess=true, privateAccess=false} for cluster "udacity" in "us-west-1"
-2022-06-15 23:21:40 [ℹ]  CloudWatch logging will not be enabled for cluster "udacity" in "us-west-1"
-2022-06-15 23:21:40 [ℹ]  you can enable it with 'eksctl utils update-cluster-logging --enable-types={SPECIFY-YOUR-LOG-TYPES-HERE (e.g. all)} --region=us-west-1 --cluster=udacity'
-2022-06-15 23:21:40 [ℹ]  
-2 sequential tasks: { create cluster control plane "udacity", 
+➜  Udacity_Capstone git:(main) ✗ ./create_eks_cluster.sh 
+2022-06-16 14:24:44 [!]  SSM is now enabled by default; `ssh.enableSSM` is deprecated and will be removed in a future release
+2022-06-16 14:24:51 [ℹ]  eksctl version 0.100.0
+2022-06-16 14:24:51 [ℹ]  using region us-east-1
+2022-06-16 14:24:58 [ℹ]  setting availability zones to [us-east-1d us-east-1c]
+2022-06-16 14:24:58 [ℹ]  subnets for us-east-1d - public:192.168.0.0/19 private:192.168.64.0/19
+2022-06-16 14:24:58 [ℹ]  subnets for us-east-1c - public:192.168.32.0/19 private:192.168.96.0/19
+2022-06-16 14:25:04 [ℹ]  nodegroup "udacity-capstone" will use "ami-04da90af795232a44" [AmazonLinux2/1.22]
+2022-06-16 14:25:04 [ℹ]  using Kubernetes version 1.22
+2022-06-16 14:25:04 [ℹ]  creating EKS cluster "udacity-capstone" in "us-east-1" region with un-managed nodes
+2022-06-16 14:25:04 [ℹ]  1 nodegroup (udacity-capstone) was included (based on the include/exclude rules)
+2022-06-16 14:25:04 [ℹ]  will create a CloudFormation stack for cluster itself and 1 nodegroup stack(s)
+2022-06-16 14:25:04 [ℹ]  will create a CloudFormation stack for cluster itself and 0 managed nodegroup stack(s)
+2022-06-16 14:25:04 [ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=us-east-1 --cluster=udacity-capstone'
+2022-06-16 14:25:04 [ℹ]  Kubernetes API endpoint access will use default of {publicAccess=true, privateAccess=false} for cluster "udacity-capstone" in "us-east-1"
+2022-06-16 14:25:04 [ℹ]  CloudWatch logging will not be enabled for cluster "udacity-capstone" in "us-east-1"
+2022-06-16 14:25:04 [ℹ]  you can enable it with 'eksctl utils update-cluster-logging --enable-types={SPECIFY-YOUR-LOG-TYPES-HERE (e.g. all)} --region=us-east-1 --cluster=udacity-capstone'
+2022-06-16 14:25:04 [ℹ]  
+2 sequential tasks: { create cluster control plane "udacity-capstone", 
     2 sequential sub-tasks: { 
-        wait for control plane to become ready,
-        create nodegroup "udacity",
+        4 sequential sub-tasks: { 
+            wait for control plane to become ready,
+            associate IAM OIDC provider,
+            2 sequential sub-tasks: { 
+                create IAM role for serviceaccount "kube-system/aws-node",
+                create serviceaccount "kube-system/aws-node",
+            },
+            restart daemonset "kube-system/aws-node",
+        },
+        create nodegroup "udacity-capstone",
     } 
 }
-2022-06-15 23:21:40 [ℹ]  building cluster stack "eksctl-udacity-cluster"
-2022-06-15 23:21:42 [ℹ]  deploying stack "eksctl-udacity-cluster"
-2022-06-15 23:22:12 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-cluster"
-2022-06-15 23:22:43 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-cluster"
-2022-06-15 23:23:44 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-cluster"
-2022-06-15 23:24:45 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-cluster"
-2022-06-15 23:25:46 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-cluster"
-2022-06-15 23:26:47 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-cluster"
+2022-06-16 14:25:04 [ℹ]  building cluster stack "eksctl-udacity-capstone-cluster"
+2022-06-16 14:25:12 [ℹ]  deploying stack "eksctl-udacity-capstone-cluster"
+2022-06-16 14:25:42 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-cluster"
+2022-06-16 14:26:18 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-cluster"
+2022-06-16 14:27:25 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-cluster"
+2022-06-16 14:28:31 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-cluster"
+2022-06-16 14:29:38 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-cluster"
+2022-06-16 14:30:44 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-cluster"
+2022-06-16 14:31:51 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-cluster"
+2022-06-16 14:32:57 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-cluster"
+2022-06-16 14:34:04 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-cluster"
+2022-06-16 14:35:10 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-cluster"
+2022-06-16 14:37:51 [ℹ]  building iamserviceaccount stack "eksctl-udacity-capstone-addon-iamserviceaccount-kube-system-aws-node"
+2022-06-16 14:37:58 [ℹ]  deploying stack "eksctl-udacity-capstone-addon-iamserviceaccount-kube-system-aws-node"
+2022-06-16 14:37:58 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-addon-iamserviceaccount-kube-system-aws-node"
+2022-06-16 14:38:35 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-addon-iamserviceaccount-kube-system-aws-node"
+2022-06-16 14:38:36 [ℹ]  serviceaccount "kube-system/aws-node" already exists
+2022-06-16 14:38:36 [ℹ]  updated serviceaccount "kube-system/aws-node"
+2022-06-16 14:38:38 [ℹ]  daemonset "kube-system/aws-node" restarted
+2022-06-16 14:38:38 [ℹ]  building nodegroup stack "eksctl-udacity-capstone-nodegroup-udacity-capstone"
+2022-06-16 14:38:39 [ℹ]  deploying stack "eksctl-udacity-capstone-nodegroup-udacity-capstone"
+2022-06-16 14:38:40 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-nodegroup-udacity-capstone"
+2022-06-16 14:39:16 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-nodegroup-udacity-capstone"
+2022-06-16 14:40:03 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-nodegroup-udacity-capstone"
+2022-06-16 14:41:53 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-nodegroup-udacity-capstone"
+2022-06-16 14:42:50 [ℹ]  waiting for CloudFormation stack "eksctl-udacity-capstone-nodegroup-udacity-capstone"
+2022-06-16 14:42:50 [ℹ]  waiting for the control plane availability...
+2022-06-16 14:42:51 [✔]  saved kubeconfig as "/Users/phongtq2/.kube/config"
+2022-06-16 14:42:51 [ℹ]  no tasks
+2022-06-16 14:42:51 [✔]  all EKS cluster resources for "udacity-capstone" have been created
+2022-06-16 14:42:58 [ℹ]  adding identity "arn:aws:iam::001240578462:role/eksctl-udacity-capstone-nodegroup-NodeInstanceRole-1OISENPBUTNM8" to auth ConfigMap
+2022-06-16 14:42:59 [ℹ]  nodegroup "udacity-capstone" has 0 node(s)
+2022-06-16 14:42:59 [ℹ]  waiting for at least 2 node(s) to become ready in "udacity-capstone"
+2022-06-16 14:43:49 [ℹ]  nodegroup "udacity-capstone" has 2 node(s)
+2022-06-16 14:43:49 [ℹ]  node "ip-192-168-55-167.ec2.internal" is ready
+2022-06-16 14:43:49 [ℹ]  node "ip-192-168-6-48.ec2.internal" is ready
+2022-06-16 14:43:51 [ℹ]  kubectl command should work with "/Users/phongtq2/.kube/config", try 'kubectl get nodes'
+2022-06-16 14:43:51 [✔]  EKS cluster "udacity-capstone" in "us-east-1" region is ready
+➜  Udacity_Capstone git:(main) ✗ 
