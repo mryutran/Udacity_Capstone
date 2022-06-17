@@ -109,4 +109,4 @@ workflows:
       #     requires:
       #       - "build-docker-image"
       - aws-eks/create-cluster:
-          cluster-name: udacity_capstone
+          cluster-name: udacity-apstone
