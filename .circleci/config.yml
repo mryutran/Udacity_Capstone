@@ -60,7 +60,7 @@ workflows:
   default:
     jobs:
       - shellcheck/check
-      - run-lint
+      - run-lint:
           requires:
             - "shellcheck/check"
       - build-docker-image:
