@@ -257,3 +257,5 @@ workflows:
               - "create-loadbalancer"
       - delete-eks-cluster:
           cluster-name: udacity-capstone
+          requires:
+              - "delete_k8s"
