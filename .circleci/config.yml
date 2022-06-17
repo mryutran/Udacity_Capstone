@@ -213,8 +213,8 @@ workflows:
       # - aws-eks/create-cluster:
       # - create-eks-cluster:
       #     cluster-name: udacity-capstone
-      # - deploy-application:
-      #     cluster-name: udacity-capstone
+      - deploy-application:
+          cluster-name: udacity-capstone
       #     version: "1.0"
       #     requires:
       #         - "create-eks-cluster"
@@ -222,15 +222,15 @@ workflows:
       #     cluster-name: udacity-capstone
       #     requires:
       #         - "deploy-application"
-      # - create-loadbalancer:
-      #     cluster-name: udacity-capstone
+      - create-loadbalancer:
+          cluster-name: udacity-capstone
       #     requires:
       #         - "check-application"
-      # - check-loadbalancer:
-      #     cluster-name: udacity-capstone
+      - check-loadbalancer:
+          cluster-name: udacity-capstone
       #     requires:
       #         - "create-loadbalancer"
-      - delete-k8s:
-          cluster-name: udacity-capstone
+      # - delete-k8s:
+      #     cluster-name: udacity-capstone
       #     requires:
       #         - "create-loadbalancer"
