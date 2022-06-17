@@ -181,27 +181,27 @@ workflows:
       # - build-docker-image:
           # requires:
           #   - "run-lint"
-      - push-docker-image-to-docker-hub
+      # - push-docker-image-to-docker-hub
       # - push-docker-image-to-docker-hub:
       #     requires:
       #       - "build-docker-image"
       # - aws-eks/create-cluster:
       # - create-eks-cluster:
       #     cluster-name: udacity-capstone
-      - deploy-application:
-          cluster-name: udacity-capstone
-          version: "1.0"
+      # - deploy-application:
+      #     cluster-name: udacity-capstone
+      #     version: "1.0"
       #     requires:
       #         - "create-eks-cluster"
-      # - check-application:
-      #     cluster-name: udacity-capstone
+      - check-application:
+          cluster-name: udacity-capstone
       #     requires:
       #         - "deploy-application"
       # - create-loadbalancer:
       #     cluster-name: udacity-capstone
       #     requires:
       #         - "check-application"
-      # - check-loadbalancer:
-      #     cluster-name: udacity-capstone
+      - check-loadbalancer:
+          cluster-name: udacity-capstone
       #     requires:
       #         - "create-loadbalancer"
