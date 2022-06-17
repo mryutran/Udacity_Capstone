@@ -13,8 +13,8 @@ COPY . app.py /app/
 #     pip install --no-cache-dir -r requirements.txt
 RUN make install
 ## Step 4:
-# Expose port 80
-EXPOSE 80
+# Expose port 8080
+EXPOSE 8080
 ## Step 5:
 # Run app.py at container launch
 CMD ["python", "app.py"]
