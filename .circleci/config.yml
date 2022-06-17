@@ -1,4 +1,10 @@
 version: 2
+
+orbs:
+  aws-eks: circleci/aws-eks@1.1.0
+  aws-ecr: circleci/aws-ecr@7.2.0
+  kubernetes: circleci/kubernetes@0.4.0
+
 jobs:
     build:
       docker:
@@ -35,3 +41,16 @@ jobs:
             command: |
               . venv/bin/activate
               make lint 
+    
+    build-docker-image:
+      docker:
+        - image: python:3.7.3-stretch
+      steps:
+        - checkout
+        - setup_remote_docker:
+            version: 20.10.14
+        - run:
+           name: Build Docker Image
+           command: |
+            build_docker.sh
+    
