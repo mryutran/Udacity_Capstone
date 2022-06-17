@@ -6,7 +6,7 @@ orbs:
   kubernetes: circleci/kubernetes@0.4.0
 
 jobs:
-    build:
+    run-lint:
       docker:
         # Use the same Docker base as the project
         - image: python:3.7.3-stretch
@@ -52,12 +52,13 @@ jobs:
         - run:
            name: Build Docker Image
            command: |
-            build_docker.sh
+            chmod +x build_docker.sh
+            - sh build_docker.sh
     
 workflows:
   default:
     jobs:
-      - build
+      - run-lint
       - build-docker-image:
           requires:
             - "build"
