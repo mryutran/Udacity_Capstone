@@ -94,7 +94,27 @@ jobs:
             command: |
               kubectl get services
             name: Test Cluster
-      
+
+    deploy-application:
+      docker:
+      - image: 'cimg/python:3.10'
+      parameters:
+        cluster-name:
+          description: |
+            Name of the EKS cluster
+          type: string
+        version:
+          description: |
+            Application version
+          type: string
+      steps:
+        - checkout
+        - kubernetes/install:
+            kubectl-version: v1.22.0
+        - kubernetes/create-or-update-resource:
+            resource-file-path: "deployment.yml"
+            resource-name: udacity-capstone
+
 workflows:
   default:
     jobs:
@@ -108,5 +128,11 @@ workflows:
       # - push-docker-image-to-docker-hub:
       #     requires:
       #       - "build-docker-image"
-      - aws-eks/create-cluster:
+      # - aws-eks/create-cluster:
+      - create-eks-cluster:
           cluster-name: udacity-capstone
+      # - deploy-application:
+      #     cluster-name: udacity-capstone
+      #     version: 1
+      #     requires:
+      #         - "create-eks-cluster"
