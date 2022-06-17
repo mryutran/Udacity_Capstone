@@ -178,12 +178,13 @@ workflows:
       # - run-lint:
       #     requires:
       #       - "shellcheck/check"
+        - build-docker-image:
       # - build-docker-image:
           # requires:
           #   - "run-lint"
-      # - push-docker-image-to-docker-hub:
-      #     requires:
-      #       - "build-docker-image"
+      - push-docker-image-to-docker-hub:
+          requires:
+            - "build-docker-image"
       # - aws-eks/create-cluster:
       # - create-eks-cluster:
       #     cluster-name: udacity-capstone
@@ -200,7 +201,7 @@ workflows:
       #     cluster-name: udacity-capstone
       #     requires:
       #         - "check-application"
-        - check-loadbalancer:
-            cluster-name: udacity-capstone
+      # - check-loadbalancer:
+      #     cluster-name: udacity-capstone
       #     requires:
       #         - "create-loadbalancer"
