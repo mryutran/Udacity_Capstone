@@ -61,4 +61,4 @@ workflows:
       - run-lint
       - build-docker-image:
           requires:
-            - "build"
+            - "run-lint"
