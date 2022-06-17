@@ -45,12 +45,10 @@ jobs:
     
     build-docker-image:
       docker:
-        # - image: python:3.7.3-stretch
         - image: circleci/node:13.8.0
       steps:
         - checkout
         - setup_remote_docker:
-            # version: 20.10.14
             version: 19.03.13
         - run:
            name: Build Docker Image
@@ -58,6 +56,20 @@ jobs:
             chmod +x build_docker.sh
             bash build_docker.sh
     
+    push-docker-image-to-docker-hub:
+      docker:
+        - image: circleci/node:13.8.0
+      steps:
+        - checkout
+        - setup_remote_docker:
+            version: 19.03.13
+        - run:
+            name: Push Docker Image to Docker Hub
+            command: |
+              chmod +x build_docker.sh
+              bash build_docker.sh
+              docker login -u mryutran -p $DOCKER_PASSWORD
+              docker push mryutran/udacity_capstone
 workflows:
   default:
     jobs:
@@ -65,7 +77,10 @@ workflows:
       # - run-lint:
       #     requires:
       #       - "shellcheck/check"
-      - build-docker-image
       # - build-docker-image:
           # requires:
           #   - "run-lint"
+      - push-docker-image-to-docker-hub
+      # - push-docker-image-to-docker-hub:
+      #     requires:
+      #       - "build-docker-image"
