@@ -68,8 +68,9 @@ jobs:
             command: |
               chmod +x build_docker.sh
               bash build_docker.sh
+              export tag=latest
               docker login -u mryutran -p $DOCKER_PASSWORD
-              docker push mryutran/udacity_capstone
+              docker push mryutran/udacity_capstone:$tag
 workflows:
   default:
     jobs:
