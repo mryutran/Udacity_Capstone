@@ -1,2 +1,2 @@
 #!/bin/sh
-eksctl delete cluster --region=us-west-1 --name=udacity
+eksctl delete cluster --region=us-east-1 --name=udacity-capstone
