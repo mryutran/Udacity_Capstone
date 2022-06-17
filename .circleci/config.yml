@@ -82,6 +82,8 @@ jobs:
           type: string
       steps:
         - checkout
+        - aws-eks/install-aws-iam-authenticator:
+            release-tag: ''
         - kubernetes/install:
             kubectl-version: v1.22.0
         - aws-eks/create-cluster:
@@ -90,10 +92,6 @@ jobs:
             node-type: t2.micro
             ssh-access: true
             ssh-public-key: id_rsa.pub
-        - run:
-            command: |
-              kubectl get services
-            name: Test Cluster
 
     deploy-application:
       docker:
