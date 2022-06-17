@@ -258,4 +258,4 @@ workflows:
       - delete-eks-cluster:
           cluster-name: udacity-capstone
           requires:
-              - "delete_k8s"
+              - "delete-k8s"
