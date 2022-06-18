@@ -13,3 +13,5 @@ Deployment strategy: Blue / Green
 - Create EKS Cluster. `create_eks_cluster.sh`
 - Deploy applications with kubectl `deployment.yml` and `loadbalancer.yml`
 - Delete EKS cluster `delete_k8s.sh`
+
+My repos link: https://github.com/mryutran/Udacity_Capstone
