@@ -251,11 +251,11 @@ workflows:
           cluster-name: udacity-capstone
           requires:
               - "create-loadbalancer"
-      - delete-k8s:
-          cluster-name: udacity-capstone
-          requires:
-              - "create-loadbalancer"
-      - delete-eks-cluster:
-          cluster-name: udacity-capstone
-          requires:
-              - "delete-k8s"
+      # - delete-k8s:
+      #     cluster-name: udacity-capstone
+      #     requires:
+      #         - "create-loadbalancer"
+      # - delete-eks-cluster:
+      #     cluster-name: udacity-capstone
+      #     requires:
+      #         - "delete-k8s"
